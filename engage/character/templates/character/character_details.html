@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="{% static 'character/favicon.ico' %}" />
+    <link rel="stylesheet" href="{%static 'character/css/character_details.css' %}" />
+    <script type="text/javascript" src="{% static 'character/js/jquery.min.js' %}" ></script>
+    <title>character status</title>
+</head>
+<body>
+
+{% if character_status %}
+    <div>
+        <table class="status_table">
+            <caption style="font-size: 22px;">character status</caption>
+            <colgroup>
+                <col span="10" width="50px">
+            </colgroup>
+            <tbody>
+                <tr>
+                    <th>HP</th>
+                    <th>力量</th>
+                    <th>魔力</th>
+                    <th>技术</th>
+                    <th>速度</th>
+                    <th>物防</th>
+                    <th>魔防</th>
+                    <th>幸运</th>
+                    <th>体格</th>
+                    <th>移动</th>
+                </tr>
+                <tr>
+                    <td>
+                        <span>{{character_status.hp}}</span>
+                    </td>
+                    <td>
+                        <span>{{character_status.strong}}</span>
+                    </td>
+                    <td>
+                        <span>{{character_status.magic}}</span>
+                    </td>
+                    <td>
+                        <span>{{character_status.dexterity}}</span>
+                    </td>
+                    <td>
+                        <span>{{character_status.speed}}</span>
+                    </td>
+                    <td>
+                        <span>{{character_status.defense}}</span>
+                    </td>
+                    <td>
+                        <span>{{character_status.resistance}}</span>
+                    </td>
+                    <td>
+                        <span>{{character_status.lucky}}</span>
+                    </td>
+                    <td>
+                        <span>{{character_status.build}}</span>
+                    </td>
+                    <td>
+                        <span>{{character_status.movement}}</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endif %}
+
+{% if character_growths%}
+    <div>
+        <table class="status_table">
+            <caption style="font-size: 22px;">character growths</caption>
+            <colgroup>
+                <col span="10" width="50px">
+            </colgroup>
+            <tbody>
+                <tr>
+                    <th>HP</th>
+                    <th>力量</th>
+                    <th>魔力</th>
+                    <th>技术</th>
+                    <th>速度</th>
+                    <th>物防</th>
+                    <th>魔防</th>
+                    <th>幸运</th>
+                    <th>体格</th>
+                    <th>移动</th>
+                </tr>
+                <tr>
+                    <td>
+                        <span>{% widthratio character_growths.hp 1 100 %}%</span>
+                    </td>
+                    <td>
+                        <span>{% widthratio character_growths.strong 1 100 %}%</span>
+                    </td>
+                    <td>
+                        <span>{% widthratio character_growths.magic 1 100 %}%</span>
+                    </td>
+                    <td>
+                        <span>{% widthratio character_growths.dexterity 1 100 %}%</span>
+                    </td>
+                    <td>
+                        <span>{% widthratio character_growths.speed 1 100 %}%</span>
+                    </td>
+                    <td>
+                        <span>{% widthratio character_growths.defense 1 100 %}%</span>
+                    </td>
+                    <td>
+                        <span>{% widthratio character_growths.resistance 1 100 %}%</span>
+                    </td>
+                    <td>
+                        <span>{% widthratio character_growths.lucky 1 100 %}%</span>
+                    </td>
+                    <td>
+                        <span>{% widthratio character_growths.build 1 100 %}%</span>
+                    </td>
+                    <td>
+                        <span>{% widthratio character_growths.movement 1 100 %}%</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endif %}
+
+    <div>
+        {% if profession_list %}
+        <select name="profession_id", id="select_profession">
+            {% for profession in profession_list %}
+                <option value="{{profession.id}}">{{profession.name}}</option>
+            {% endfor %}
+            </select>
+        {% endif %}
+    </div>
+
+
+<!--
+    <script type="text/javascript">
+        $("#profession_submit").click(function(){
+            $.ajax({
+                url: "{% url 'character_status' %}",
+                type: "POST",
+                data: $("#form_profession").serialize(),
+                dataType: "json",
+                
+            })
+        })
+    -->
+    </script>
+</body>
+</html>

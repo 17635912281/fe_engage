@@ -1,0 +1,17 @@
+body{
+    background: url("../img/link_bg.jpg") fixed;
+    background-size: 100%;
+}
+
+.status_table{
+    text-align: left;
+    margin: 20px 0px;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+td, th{
+    text-align: left;
+    padding: 2px 3px;
+    border: 1px solid #000;
+}
